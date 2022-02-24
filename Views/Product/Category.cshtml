@@ -1,13 +1,11 @@
 @using Northwind.Models
 @model IEnumerable<Category>
 
-<div class="bg-primary m-1 p-1 text-white"><h4>Category Listing</h4></div>
+@*<div style="background-color:#6495ED; color:white; padding-top:10px; padding-bottom:10px"><h4>Category Listing</h4></div>*@
+@* <div class="bg-primary m-1 p-1 text-white"><h4>Category Listing</h4></div> *@
 <ul>
     @foreach (Category category in Model)
     {
         <li>@category.CategoryName - @category.Description</li>
     }
 </ul>
-
-<hr />
-<a asp-action="Category">Product</a>

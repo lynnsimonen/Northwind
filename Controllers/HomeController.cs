@@ -10,6 +10,6 @@ namespace Northwind.Controllers
         private NorthwindContext _northwindContext;
         public HomeController(NorthwindContext db) => _northwindContext = db;
 
-        public IActionResult Index() => View(_northwindContext.Categories);
+        public IActionResult Index() => View();
     }
 }
