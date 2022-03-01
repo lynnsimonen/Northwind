@@ -3,9 +3,10 @@
 
 @*<div style="background-color:#6495ED; color:white; padding-top:10px; padding-bottom:10px"><h4>Category Listing</h4></div>*@
 @* <div class="bg-primary m-1 p-1 text-white"><h4>Category Listing</h4></div> *@
-<ul>
+<ul class="list-group">
     @foreach (Category category in Model)
     {
-        <li>@category.CategoryName - @category.Description</li>
+        <li class="list-group-item"i><a asp-controller="Product" asp-action="Index" asp-route-id="@category.CategoryId">@category.CategoryName - @category.Description</a>
+        </li>
     }
 </ul>
