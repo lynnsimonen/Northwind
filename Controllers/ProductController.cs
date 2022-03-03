@@ -17,5 +17,7 @@ namespace Northwind.Controllers
 
         //HELP!!! - link each category to a new controller method (Product/Index)
         public IActionResult Index(int id) => View(_NorthwindContext.Products.Where(p => p.CategoryId == id && p.Discontinued == false));   
+
+        public IActionResult Discounts() => View();
     }
 }
