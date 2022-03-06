@@ -7,7 +7,7 @@ namespace Northwind.Models
         public int ProductId { get; set; }
         public string ProductName { get; set; }
         public string QuantityPerUnit { get; set; }
-        [Column(TypeName = "decimal(18,4)")]
+        [Column(TypeName = "decimal(18,2)")]
         public Decimal UnitPrice { get; set; }
         public short UnitsInStock { get; set; }
         public short UnitsOnOrder { get; set; }

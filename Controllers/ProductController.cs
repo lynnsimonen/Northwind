@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Northwind.Models;
@@ -15,9 +16,11 @@ namespace Northwind.Controllers
         //NOTE: do not include discontinued products
         public IActionResult Category() => View(_NorthwindContext.Categories.OrderBy(b => b.CategoryName));
 
-        //HELP!!! - link each category to a new controller method (Product/Index)
+        //link each category to a new controller method (Product/Index)
         public IActionResult Index(int id) => View(_NorthwindContext.Products.Where(p => p.CategoryId == id && p.Discontinued == false));   
 
-        public IActionResult Discounts() => View();
+        //display all current product discounts (use valid date range) in a Bootstrap list view
+        public IActionResult Discounts() => View(_NorthwindContext.Discounts.Where(d => d.StartTime <= DateTime.Now && d.EndTime > DateTime.Now).OrderBy(d => d.Code));
     }
 }
+// == id && d.EndTime > DateTime.Now
