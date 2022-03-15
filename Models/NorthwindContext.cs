@@ -11,5 +11,15 @@ namespace Northwind.Models
         public DbSet<Discount> Discounts { get; set; }
         public DbSet<Customer> Customers { get; set; }
 
+         public void AddCustomer(Customer customer)
+        {
+            this.Add(customer);
+            this.SaveChanges();
+        }
+        public void DeleteCustomer(Customer customer)
+        {
+            this.Remove(customer);
+            this.SaveChanges();
+        }
     }
 }

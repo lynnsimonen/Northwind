@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Northwind.Models;
 
@@ -13,15 +10,34 @@ namespace Northwind.Controllers
         private NorthwindContext _NorthwindContext;
         public CustomerController(NorthwindContext db) => _NorthwindContext = db;
 
-        public IActionResult CurrentAccount(int id) => View(_NorthwindContext.Customers.Where(p => p.CustomerId == id));
+        // public IActionResult Register() => View();
 
-        //return a view when requested (/Customer/Register). 
-        //The view will display a form designed to add customer data to the database.        
-        [HttpGet]
-        public IActionResult Register() => View();
+        public IActionResult CustomerList() => View(_NorthwindContext.Customers.OrderBy(c => c.CompanyName));
 
         [HttpPost]
-        public IActionResult Register(Customer customer) => View();
-
+        [ValidateAntiForgeryToken]
+        //Add Customer
+        public IActionResult Register(Customer customer)
+        {
+            if (ModelState.IsValid)
+            {
+                if (_NorthwindContext.Customers.Any(b => b.CompanyName == customer.CompanyName))
+                {
+                    ModelState.AddModelError("", "Name must be unique");
+                }
+                else
+                {
+                    _NorthwindContext.AddCustomer(customer);
+                    return RedirectToAction("Index");
+                }
+            }
+            return View();
         }
+        public IActionResult DeleteCustomer(int id)
+        {
+            _NorthwindContext.DeleteCustomer(_NorthwindContext.Customers.FirstOrDefault(b => b.CustomerId == id));
+            return RedirectToAction("Index");
+        }
+     
+    }
 }

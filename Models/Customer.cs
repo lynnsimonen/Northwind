@@ -12,7 +12,7 @@ namespace Northwind.Models
 
         [Required]
         [StringLength(50)]
-        public string CustomerName { get; set; }
+        public string CompanyName { get; set; }
 
         [StringLength(50)]
         public string Address { get; set; }
