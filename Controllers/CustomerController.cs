@@ -1,6 +1,6 @@
-using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Northwind.Models;
+using System.Linq;
 
 namespace Northwind.Controllers
 {
@@ -14,29 +14,32 @@ namespace Northwind.Controllers
 
         public IActionResult CustomerList() => View(_NorthwindContext.Customers.OrderBy(c => c.CompanyName));
 
+        public IActionResult Register() => View();
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         //Add Customer
-        public IActionResult Register(Customer customer)
-        {
+        public IActionResult Register(Customer model)
+        {            
             if (ModelState.IsValid)
             {
-                if (_NorthwindContext.Customers.Any(b => b.CompanyName == customer.CompanyName))
+                if (_NorthwindContext.Customers.Any(b => b.CompanyName == model.CompanyName))
                 {
                     ModelState.AddModelError("", "Name must be unique");
                 }
                 else
                 {
-                    _NorthwindContext.AddCustomer(customer);
-                    return RedirectToAction("Index");
+                    _NorthwindContext.AddCustomer(model);
+                    return RedirectToAction("CustomerList");
                 }
-            }
+            }            
             return View();
+            model.CompanyName.Equals("");
         }
         public IActionResult DeleteCustomer(int id)
         {
             _NorthwindContext.DeleteCustomer(_NorthwindContext.Customers.FirstOrDefault(b => b.CustomerId == id));
-            return RedirectToAction("Index");
+            return RedirectToAction("CustomerList");
         }
      
     }

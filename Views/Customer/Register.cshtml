@@ -1,38 +1,43 @@
-@using Northwind.Models
-@model IEnumerable<Customer>
+@model Northwind.Models.Customer
 
 
-@* <form method="post">
-    <div asp-validation-summary="All"></div>
-    <label asp-for="@Model.CompanyName">Enter Url</label>
-    <input asp-for="@Model.CompanyName" placeholder="Customer Name" />
-    <button type="submit">Create</button>
-</form>
-*@
-
-
-<div class="bg-primary m-1 p-1 text-white"><h4>New Customer</h4></div>
+<div class="bg-primary m-1 p-1 text-white"><h4>Register A New Customer</h4></div>
 <form method="post">
   <div asp-validation-summary="All"></div>
-    <label asp-for="@Model.CompanyName" class="form-label">Customer Name</label>
-    <input asp-for="@Model.CompanyName" type="text" class="form-control">
+  <div class="mb-3">
+  <label asp-for="@Model.CompanyName" class="form-label">Customer Name</label>
+  <input asp-for="@Model.CompanyName" type="text" class="form-control">
   </div>
+  <div class="mb-3">
+    <label asp-for="@Model.Address" class="form-label">Address</label>
+    <input asp-for="@Model.Address" type="text" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label asp-for="@Model.City" class="form-label">City</label>
+    <input asp-for="@Model.City" type="text" class="form-control">
+  </div>
+  <div class="mb-3">
+   <label asp-for="@Model.Region" class="form-label">Region</label>
+    <input asp-for="@Model.Region" type="text" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label asp-for="@Model.PostalCode" class="form-label">Postal Code</label>
+    <input asp-for="@Model.PostalCode" type="text" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label asp-for="@Model.Country" class="form-label">Country</label>
+    <input asp-for="@Model.Country" type="text" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label asp-for="@Model.Phone" class="form-label">Phone</label>
+    <input asp-for="@Model.Phone" type="text" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label asp-for="@Model.Fax" class="form-label">Fax</label>
+    <input asp-for="@Model.Fax" type="text" class="form-control">
+  </div>
+  <hr />
   <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" style="border-width:0; background-color:transparent"><a asp-action="Register" class="btn btn-primary">Clear Form</a></button>
 </form>
 
-<hr />
-<a asp-action="Customer/Register">Home</a> 
-
-
-@* @model Blogs.Models.Blog
-
-<div class="bg-primary m-1 p-1 text-white"><h4>Add Blog</h4></div>
-<form method="post">
-    <div asp-validation-summary="All"></div>
-    <label asp-for="@Model.Name">Enter Url</label>
-    <input asp-for="@Model.Name" placeholder="Blog Name" />
-    <button type="submit">Create</button>
-</form> *@
-
-<hr />
-<a asp-action="Index">Home</a>
