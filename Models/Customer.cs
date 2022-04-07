@@ -14,6 +14,9 @@ namespace Northwind.Models
         [StringLength(50)]
         public string CompanyName { get; set; }
 
+        [Required]
+        public string Email { get; set; }
+
         [StringLength(50)]
         public string Address { get; set; }
 

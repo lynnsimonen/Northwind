@@ -22,7 +22,9 @@
             <td align="left">@c.Country</td>
             <td align="right">@c.PostalCode</td>
             <td align="left">@c.Phone</td>
-            <td><a asp-action="DeleteCustomer" asp-route-id="@c.CustomerId" style="border:0">Delete</a></td> 
+            //<td><a asp-action="DeleteCustomer" asp-route-id="@c.CustomerId" style="border:0">Delete</a></td> 
+            <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+            <td><a asp-action="DeleteCustomer" asp-route-id="@c.CustomerId" style="border:0">Delete</a></td>
         </tr>
       }
     </tbody>
