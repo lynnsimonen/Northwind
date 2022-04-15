@@ -37,6 +37,15 @@
                             </div>
                         </li>
                         <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-chart-line"></i> Reports
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" asp-controller="Report" asp-action="ReportOne"><i class="fas fa-chart-line"></i> ReportOne</a>
+                                <a class="dropdown-item" asp-controller="Report" asp-action="ReportTwo"><i class="fas fa-chart-pie"></i> ReportTwo</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="customerDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-users"></i> Customers
                             </a>
@@ -77,6 +86,8 @@
             &copy; 2021 - Northwind
         </div>
     </footer>
+     <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- bootstrap combined -->

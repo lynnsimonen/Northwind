@@ -1,0 +1,41 @@
+@using Northwind.Models
+@model IEnumerable<Category>
+
+<div class='report'>
+  <h1>Product Units in Stock by Category</h1>
+
+
+  <div class="dropdown">
+    <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+      aria-expanded="false">
+      Product Category
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+      @foreach (Category category in Model)
+      {
+        <button class="dropdown-item" i type="button" text-align="center" margin="auto"
+        asp-route-id="@category.CategoryId">
+          if (category.CategoryId == ViewBag.id)
+          { <option value="@category.CategoryId" selected>@category.CategoryName</option> }
+          else
+          { <option value="@category.CategoryId">@category.CategoryName</option> }
+        </button>
+      }
+    </div>
+    @* <select class="form-control form-control-sm" id="CategoryId">
+      @foreach (Category c in Model)
+      {
+
+      }
+      </select> *@
+
+  </div>
+  <div id="chart_container">
+    <canvas id="reportOne"></canvas>
+  </div>
+</div>
+
+
+@section Scripts {
+<script type="text/javascript" src="~/js/reports.js"></script>
+}

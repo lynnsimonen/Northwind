@@ -23,7 +23,8 @@ $(function(){
     $(document).on('keyup', function(e) {
         if (e.key === "Escape") {
             $('#toast').toast('hide');
-        }
+        }    
     });
-    
 });
+
+
