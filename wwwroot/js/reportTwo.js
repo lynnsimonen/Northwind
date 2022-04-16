@@ -19,22 +19,21 @@ $(function () {
             ],
 
             datasets: [{
-                label: 'Average Temperature',
-                backgroundColor: ['gray', 'red', 'green', 'yellow', 'orange', 'pink'],
+                label: 'Products?',
+                backgroundColor: ['gray'],
                 borderColor: 'black',
                 borderWidth: 1,
                 hoverBorderWidth: 3,
                 hoverBorderColor: 'black',
-                data: [5, 2, 25, 35, 55, 70, 75],
-                title: { display: true, text: 'DEMO CHART' },
-                legend: { position: 'bottom' },
+                data: [55, 2, 25, 35, 55, 70, 1],
+                title: {display: true},
             }]
         },
         options: {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Link db item name here',
+                    text: 'Report Two Title = Category',
                     font: {
                         size: 25
                     },
@@ -53,7 +52,7 @@ $(function () {
                     },
                     position: 'bottom',
                     fontColor: 'black',
-                    label: 'Average Temperature',
+                    label: 'Products???',
                 },
 
             }

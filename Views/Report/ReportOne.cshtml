@@ -2,37 +2,30 @@
 @model IEnumerable<Category>
 
 <div class='report'>
-  <h1>Product Units in Stock by Category</h1>
-
-
+  
+<h1>Product Category</h1>
   <div class="dropdown">
-    <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
-      aria-expanded="false">
-      Product Category
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-      @foreach (Category category in Model)
-      {
-        <button class="dropdown-item" i type="button" text-align="center" margin="auto"
-        asp-route-id="@category.CategoryId">
-          if (category.CategoryId == ViewBag.id)
-          { <option value="@category.CategoryId" selected>@category.CategoryName</option> }
-          else
-          { <option value="@category.CategoryId">@category.CategoryName</option> }
-        </button>
-      }
-    </div>
-    @* <select class="form-control form-control-sm" id="CategoryId">
+    <select class="btn btn-secondary btn-lg dropdown-toggle" style:padding-top="10pixels" type="button"
+      data-id="CategoryId">
       @foreach (Category c in Model)
       {
-
+        if (c.CategoryId == ViewBag.id)
+        {
+          <option value="@c.CategoryId" selected>@c.CategoryName</option>
+        }
+        else
+        {
+          <option value="@c.CategoryId">@c.CategoryName</option>
+        }
       }
-      </select> *@
-
+    </select>
+    </button>
   </div>
+
   <div id="chart_container">
     <canvas id="reportOne"></canvas>
   </div>
+
 </div>
 
 
