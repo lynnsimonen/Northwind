@@ -30,6 +30,10 @@ namespace Northwind.Controllers
 
         //returns all categories
         [HttpGet, Route ("api/category")]
-        public IEnumerable<Category> GetCategory() => _northwindContext.Categories.OrderBy(p => p.CategoryName);        
+        public IEnumerable<Category> GetCategory() => _northwindContext.Categories.OrderBy(p => p.CategoryName);
+         
+        [HttpPost, Route("api/addtocart")]
+        // adds a row to the cartitem table
+        public CartItem Post([FromBody] CartItemJSON cartItem) => _northwindContext.AddToCart(cartItem);        
     }
 }

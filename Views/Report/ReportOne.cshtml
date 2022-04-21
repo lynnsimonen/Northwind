@@ -6,7 +6,7 @@
 <h1>Product Category</h1>
   <div class="dropdown">
     <select class="btn btn-secondary btn-lg dropdown-toggle" style:padding-top="10pixels" type="button"
-      data-id="CategoryId">
+      id="CategoryId">
       @foreach (Category c in Model)
       {
         if (c.CategoryId == ViewBag.id)
@@ -23,7 +23,7 @@
   </div>
 
   <div id="chart_container">
-    <canvas id="reportOne"></canvas>
+    <canvas id="reportOne" data-id="@ViewBag.id"></canvas>
   </div>
 
 </div>

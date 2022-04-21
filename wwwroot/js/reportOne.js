@@ -2,17 +2,26 @@ $(function () {
     var reportOneLabels = [];
     var reportUnitsInStock = [];
     var reportReorderLevel = [];
-    var chosenCategory = $("div select").children("option:selected").val();
+    //var chosenCategory = $("div select").children("option:selected").val();
     //var chosenCategory = $("div select").children("option:selected").attr("selected", true).val();
     //var chosenCategory = $("div select").children("option:selected").data("id");
     //var chosenCategory = $(".btn btn-secondary btn-lg dropdown-toggle").data("id");
-    var url_product = '../../api/category/' + chosenCategory + '/product/discontinued/false';
+    //var url_product = '../../api/category/' + chosenCategory + '/product/discontinued/false';
 
-    $.getJSON(
+    getGraph()
+
+    function getGraph() {
+        var id = $('#reportOne').data('id');
+        $.getJSON(
         {
-            url: url_product,
+        
+            url: '../../api/category/' + id + '/product/discontinued/false',
             success: function (response, textStatus, jqXhr) {
-                // console.log(response);
+                reportOneLabels.length = [];
+                reportUnitsInStock = [];
+                reportReorderLevel = [];
+                
+                console.log(id);
                 for (var i = 0; i < response.length; i++) {
                     reportOneLabels.push(response[i].productName);
                 }
@@ -31,6 +40,13 @@ $(function () {
                 console.log("The following error occured: " + textStatus, errorThrown);
             }
         });
+    }
+    $('#CategoryId').on('change', function(){
+        Chart.getChart("reportOne").destroy();
+        $('#reportOne').data('id', $(this).val());
+        getGraph();
+    });
+    
 
     function generateChartOne() {
         const ctx1 = document.getElementById('reportOne');
