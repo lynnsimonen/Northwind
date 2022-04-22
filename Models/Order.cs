@@ -1,7 +1,9 @@
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
+
 namespace Northwind.Models
-{
+{    
     public class Order
     {
         public int OrderId { get; set; }        
@@ -31,9 +33,8 @@ namespace Northwind.Models
         public string ShipPostalCode { get; set; }
 
         [Column(TypeName ="string(15)")]
-        public string Country { get; set; }
-        
-        [Column(TypeName = "decimal(5,3")]
-        public Decimal Discount { get; set; }
+        public string ShipCountry { get; set; }
+
+        public ICollection<OrderDetail>OrderDetail {get; set;}
     }
 }

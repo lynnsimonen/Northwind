@@ -14,5 +14,7 @@ namespace Northwind.Models
         
         [Column(TypeName = "decimal(5,3")]
         public Decimal Discount { get; set; }
+        
+        public Order Order {get; set;}
     }
 }

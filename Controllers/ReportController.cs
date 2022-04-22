@@ -11,7 +11,7 @@ namespace Northwind.Controllers
 {
     public class ReportController : Controller
     {
-         // this controller depends on the NorthwindRepository
+        // this controller depends on the NorthwindRepository
         private NorthwindContext _northwindContext;
         public ReportController(NorthwindContext db) => _northwindContext = db;
 
@@ -22,22 +22,25 @@ namespace Northwind.Controllers
             ViewBag.id = 1;
             return View(_northwindContext.Categories.OrderBy(c => c.CategoryName));
         }
+//--------------------------------------------------------------------------------------------------------------------
+        //Pull all orders within the last year
+        //Group the orders by Orders.OrderId so the FK can then pull the OrderDetails.OrderId info to calculate sales
+        public IActionResult Order() => View(_northwindContext.Orders.Where(d => d.OrderDate >= (DateTime.Now.AddYears(-1)))
+        .GroupBy(p => p.OrderId));
 
+       
+
+        public IActionResult ReportTwo(ICollection<Order>ordersThisYear)
+        {
+        //Take the list of orders (grouped by Orders.OrderId) and do the following
+        //group each (orderDetail.OrderId) by product
+        //for each item in the group of products in orderdetails calculate sales with... ItemSale=UnitPrice*Quantity*(1-Discount)
+        //Sum of ItemSales for each product group (within the last year)
+        //To List
+       // var OrderDetailPastYear = _northwindContext.OrderDetails.Where(o => o.OrderId().Contains(o.OrderDetailId)).ToList();
         
-       //public IActionResult ReportOne() => View(_northwindContext.Categories.OrderBy(b => b.CategoryName));
-  
-    //    public IActionResult ReportOne() {
-    //        List<Category> categories = _northwindContext.Categories.OrderBy(b => b.CategoryId).ToList();
-    //        return View(categories);
-    //    }
-        // [HttpGet]
-        // public Category GetCategory(int id)
-        // {
-        //     Category chosenCategory = _northwindContext.Categories.Where(c => c.CategoryId == id);
-        //     ViewBag.id = id;
-        //     return chosenCategory;
-        // }
-        
-        public IActionResult ReportTwo() => View(_northwindContext.Discounts.OrderBy(b => b.DiscountId));    
+        ViewBag.ordersThisYear = 1;  //???
+        return View(_northwindContext.OrderDetails.GroupBy(b => b.ProductId));
+        }
     }
 }
