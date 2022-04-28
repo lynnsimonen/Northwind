@@ -4,17 +4,19 @@ namespace Northwind.Models
 {
     public class OrderDetail
     {
-        public int OrderDetailId { get; set; }
-        public int OrderId { get; set; }        
-        public int ProductId { get; set; }
+        public Int32 OrderDetailId { get; set; }
+        public Int32 OrderId { get; set; }        
+        public Int32 ProductId { get; set; }
 
         [Column(TypeName = "decimal(18,2)")]
-        public Decimal UnitPrice { get; set; }
-        public int Quantity { get; set; }
+        public decimal UnitPrice { get; set; }
+        public Int16 Quantity { get; set; }
         
         [Column(TypeName = "decimal(5,3")]
-        public Decimal Discount { get; set; }
-        
+        public decimal Discount { get; set; }
+
         public Order Order {get; set;}
+        public Product Product {get; set;}
+        
     }
 }

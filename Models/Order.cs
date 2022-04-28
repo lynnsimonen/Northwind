@@ -15,26 +15,17 @@ namespace Northwind.Models
         public int ShipVia { get; set; }
 
         [Column(TypeName = "decimal(18,2)")]
-        public Decimal Freight { get; set; }
-
-        [Column(TypeName ="string(40)")]
+        public decimal Freight { get; set; }
         public string ShipName { get; set; }
-
-        [Column(TypeName ="string(60)")]
         public string ShipAddress { get; set; }
-
-        [Column(TypeName ="string(15)")]
         public string ShipCity { get; set; }
-
-        [Column(TypeName ="string(15)")]
         public string ShipRegion { get; set; }
-
-        [Column(TypeName ="string(10)")]
         public string ShipPostalCode { get; set; }
-
-        [Column(TypeName ="string(15)")]
         public string ShipCountry { get; set; }
 
-        public ICollection<OrderDetail>OrderDetail {get; set;}
+        public Customer Customer {get; set;}
+        public ICollection<OrderDetail> OrderDetails { get; set; }
+
+
     }
 }
