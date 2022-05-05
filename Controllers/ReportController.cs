@@ -23,8 +23,12 @@ namespace Northwind.Controllers
         //Pull all orders within the last year
         //Group the orders by Orders.OrderId so the FK can then pull the OrderDetails.OrderId info to calculate sales        
 
-        // public IActionResult ReportTwo() => View(_northwindContext.OrderDetails.GroupBy(c => c.ProductId));
-        
+
+        public IActionResult ReportTwo(int id)
+        {
+            ViewBag.id = 1;
+            return View(_northwindContext.Categories.OrderBy(c => c.CategoryName));
+        }
         
     }
 }
